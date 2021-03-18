@@ -1,3 +1,16 @@
+<?php session_start();?>
+
+<?php 
+    error_reporting (E_ALL ^ E_NOTICE);
+    session_start();
+    
+    if (isset($_GET['logout'])) {
+      session_destroy();
+      unset($_SESSION['username']);
+      header('location:index');
+  }
+  
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +32,7 @@
 
             <div class="container">
                 <div class="navbar-brand">
-                    <a class="navbar-item" href="index.php"><img src="img/website/logo.png" alt="Logo"></a>
+                    <a class="navbar-item" href="index"><img src="img/website/logo.png" alt="Logo"></a>
                     <span class="navbar-burger burger" data-target="navbarMenu">
                         <span></span>
                         <span></span>
@@ -34,13 +47,47 @@
                       <span class="navbar-item"><a class="navbar-item" href="product">รายการสินค้า</a></span>
                       <span class="navbar-item"><a class="navbar-item">ติดต่อฉัน</a></span>                    
 
-                      
-                      
-                </div>
+                      <?php if (!isset($_SESSION['userlevel'])) : ?>
+                        <div class="navbar-item has-dropdown is-hoverable">
+                          <a class="navbar-link">โปรดเข้าสู่ระบบ</a>
+                            <div class="navbar-dropdown">
+                              <a class="navbar-item" href="register">Register</a>
+                              <a class="navbar-item" href="login">Login</a>
+                              <hr class="navbar-divider">
+                            <div class="navbar-item">Version 0.9.1</div>
+                            </div>
+                      </div><?php endif ?>
 
-          </div>
-      </div>
-    </nav>
+                      <?php if (isset($_SESSION['userlevel'])) : ?>
+                        <?php 
+                          if ($_SESSION['userlevel']=='admin'){ ?>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                          <a class="navbar-link">Welcome : &nbsp;<strong><?php echo $_SESSION['username']; ?></strong></a>
+                            <div class="navbar-dropdown">
+                              <a class="navbar-item">Role is Admin</a>
+                              <a class="navbar-item" href="profile">Profile</a>
+                              <a class="navbar-item" href="dashboard">Dashboard</a>
+                              <hr class="navbar-divider">
+                            <div class="navbar-item"><a href="index.php?logout='1'" style="color: red;">Logout</a></div>
+                          </div>
+                      </div>
+                      <?php } else{ ?>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">Welcome : &nbsp;<strong><?php echo $_SESSION['username']; ?></strong></a>
+                              <div class="navbar-dropdown">
+                                <a class="navbar-item">Role is Member</a>
+                                <a class="navbar-item" href="profile">Profile</a>
+                                <a class="navbar-item" href="profile">Require Records</a>
+                                <hr class="navbar-divider">
+                              <div class="navbar-item"><a href="index.php?logout='1'" style="color: red;">Logout</a></div>
+                            </div>
+                        </div>
+                      <?php } endif ?>
+                  
+                  </div> 
+                </div>
+            </div>
+        </nav>
     
     
 

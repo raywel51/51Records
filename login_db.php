@@ -7,6 +7,7 @@
     if (isset($_POST['login_user'])) {
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
+        $passwordenc = md5($password);
 
         if (empty($username)) {
             array_push($errors, "Username is required");
@@ -17,7 +18,7 @@
         }
 
         if (count($errors) == 0) {
-            $query = "SELECT * FROM userlogin WHERE username = '$username' AND password = '$password' ";
+            $query = "SELECT * FROM userlogin WHERE username = '$username' AND password = '$passwordenc' ";
             $result = mysqli_query($conn, $query);
             while($row = mysqli_fetch_array($result)){
                 $userlevel=$row['role'];
