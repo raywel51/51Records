@@ -18,7 +18,7 @@
         }
 
         if (count($errors) == 0) {
-            $query = "SELECT * FROM userlogin WHERE username = '$username' AND password = '$passwordenc' ";
+            $query = "SELECT * FROM userlogin WHERE username = '$username' AND password = '$password' ";
             $result = mysqli_query($conn, $query);
             while($row = mysqli_fetch_array($result)){
                 $userlevel=$row['role'];

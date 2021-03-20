@@ -32,7 +32,7 @@
     <div id="formFooter ">
       <a class="underlineHover" href="index.php">Cancel?</a>
            ||
-      <a class="underlineHover" href="#">No account?</a>
+      <a class="underlineHover" href="#">Have a account?</a>
     </div>
 
   </div>
