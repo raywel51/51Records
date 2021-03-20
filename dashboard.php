@@ -21,7 +21,7 @@
         <header class="main-header">
       
           <!-- Logo -->
-          <a href="index2.html" class="logo">
+          <a href="index.php" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -218,21 +218,12 @@
       
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu" data-widget="tree">
-              <li class="header">HEADER</li>
+              <li class="header">Menu</li>
               <!-- Optionally, you can add icons to the links -->
-              <li><a href="index.html"><i class="fa fa-link"></i> <span>Home</span></a></li>
-              <li class="active"><a href="infomation.html"><i class="fa fa-link"></i> <span>Infomation</span></a></li>
-              <li class="treeview">
-                <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
-                  <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                  <li><a href="#">Link in level 2</a></li>
-                  <li><a href="#">Link in level 2</a></li>
-                </ul>
-              </li>
+              <li class="active"><a href="infomation.html"><i class="fa fa-link"></i> <span>Home Page</span></a></li>
+              <li><a href="index.html"><i class="fa fa-link"></i> <span>User Login</span></a></li>
+              <li><a href="index.html"><i class="fa fa-link"></i> <span>Product Item</span></a></li>
+              <li><a class="button" name="asd" onclick="myFunction()"><i class="fa fa-link"></i> <span>asd</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
           </section>
@@ -476,3 +467,9 @@
     </script>
 </body>
 </html>
+
+<script>
+function myFunction() {
+  alert("I am an alert box!");
+}
+</script>
