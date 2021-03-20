@@ -18,7 +18,7 @@
         }
 
         if (count($errors) == 0) {
-            $query = "SELECT * FROM userlogin WHERE username = '$username' AND password = '$password' ";
+            $query = "SELECT * FROM userlogin WHERE username = '$username' AND password = '$passwordenc' ";
             $result = mysqli_query($conn, $query);
             while($row = mysqli_fetch_array($result)){
                 $userlevel=$row['role'];
@@ -32,7 +32,8 @@
             } else {
                 array_push($errors, "Wrong Username or Password");
                 $_SESSION['error'] = "Wrong Username or Password!";
-                header("location: login");
+                echo $passwordenc;
+                //header("location: login");
             }
         } else {
             array_push($errors, "Username & Password is required");

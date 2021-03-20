@@ -1,5 +1,3 @@
-<?php session_start();?>
-
 <?php 
     error_reporting (E_ALL ^ E_NOTICE);
     session_start();
@@ -34,7 +32,7 @@
 
             <div class="container">
                 <div class="navbar-brand">
-                    <a class="navbar-item" href="index"><img src="img/website/logo.png" alt="Logo"></a>
+                    <a class="navbar-item" href="index"><img src="img/website/logo_white.png" alt="Logo"></a>
                     <span class="navbar-burger burger" data-target="navbarMenu">
                         <span></span>
                         <span></span>

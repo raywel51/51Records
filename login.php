@@ -8,7 +8,7 @@
 
     <div class="fadeIn first">
       <p>Login Page</p>
-      <img src="img/product/1005371.png" id="icon" alt="User Icon" />
+      <img src="img/website/logo_black.png" id="icon" alt="User Icon" />
     </div>
 
     <form action="login_db" method="post">
@@ -29,7 +29,9 @@
     </form>
 
     <div id="formFooter">
-      <a class="underlineHover" href="#">No account?</a>
+      <a class="underlineHover" href="register">No account?</a>
+           ||
+      <a class="underlineHover" href="index">Go Homepage</a>
     </div>
 
   </div>

@@ -8,7 +8,7 @@
 
     <div class="fadeIn first">
       <p>Register Page</p>
-      <img src="img/product/1005371.png" id="icon" alt="User Icon" />
+      <img src="img/website/logo_black.png" id="icon" alt="User Icon" />
     </div>
 
     <form action="register_db" method="post">
@@ -23,16 +23,17 @@
           </div>
       <?php endif ?>
       <input type="text" id="login" class="fadeIn second" name="username" placeholder="username">
-      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In" name="login_user">
+      <input type="email" id="email" class="fadeIn second" name="email" placeholder="email">
+      <input type="password" id="password" class="fadeIn third" name="pw1" placeholder="password">
+      <input type="password" id="password" class="fadeIn third" name="pw2" placeholder="password">
+      <input type="submit" class="fadeIn fourth" value="Register" name="reg_user">
         
     </form>
 
     <div id="formFooter ">
-      <a class="underlineHover" href="index.php">Cancel?</a>
+      <a class="underlineHover" href="index">Cancel?</a>
            ||
-      <a class="underlineHover" href="#">Have a account?</a>
+      <a class="underlineHover" href="login">Have a account?</a>
     </div>
 
   </div>
