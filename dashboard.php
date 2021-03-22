@@ -1,12 +1,16 @@
 <?php 
     error_reporting (E_ALL ^ E_NOTICE);
     session_start();?>
-<?php if (isset($_SESSION['userlevel'])) : ?>
-                        <?php 
-                          if ($_SESSION['userlevel']=='member'){ 
-                            header("location:404");
-                            $_SESSION['404error'] = "You Are Not Admim!!!";?>
-                      <?php } else{ ?>
+    <?php 
+    if (!isset($_SESSION['userlevel'])){header("location:login");}
+
+    if (isset($_SESSION['userlevel'])){
+        if ($_SESSION['userlevel']=='member'){ 
+          $_SESSION['404error'] = "You Are Not Admin!!!";
+          header("location:404");
+        } 
+    else{ 
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,13 +20,12 @@
     <title>Learn AdminLTE</title>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="css/fontawesome.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/ionicons.min.css">
     <link rel="stylesheet" href="css/adminlte.min.css">
     <link rel="stylesheet" href="css/skin.min.css">
     <link rel="stylesheet" href="css/loader.css">
-<script type="text/javascript" src="js/loader.js"></script>
+
 </head>
 <div class="loader">
     <img src="img/website/loading.gif" alt="Loading..." />
@@ -239,11 +242,13 @@ while($arr1 = mysqli_fetch_array($result)){ ?>
 
   </body>
 
-  <?php } } endif ?>
+  <?php } ?>
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/adminlte.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/adminlte.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/loader.js"></script>
     <script>
         $('#myBox').boxWidget({
             animationSpeed: 500,
@@ -253,3 +258,4 @@ while($arr1 = mysqli_fetch_array($result)){ ?>
             expandIcon: 'fa-plus',
             removeIcon: 'fa-times'
         })
+    </script>
