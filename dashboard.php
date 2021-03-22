@@ -12,12 +12,29 @@
     else{ 
     ?>
 
+    
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/adminlte.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/loader.js"></script>
+  <script>
+      $('#myBox').boxWidget({
+          animationSpeed: 500,
+          collapseTrigger: '#boxBtn',
+          removeTrigger: '#my-remove-button-trigger',
+          collapseIcon: 'fa-minus',
+          expandIcon: 'fa-plus',
+          removeIcon: 'fa-times'
+      })
+  </script>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn AdminLTE</title>
+    <title>51 Recorde | Control Panel</title>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,11 +46,12 @@
 </head>
 <div class="loader">
     <img src="img/website/loading.gif" alt="Loading..." />
-
+</div>
 
 <?php 
 include('connection\connect.php');
-$query = "SELECT * FROM userlogin";
+$uname = $_SESSION['username'];
+$query = "SELECT * FROM userlogin WHERE username='".$uname."' ";
 $result = mysqli_query ($conn,$query);
 while($arr1 = mysqli_fetch_array($result)){ ?>
 
@@ -236,26 +254,11 @@ while($arr1 = mysqli_fetch_array($result)){ ?>
         immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
       </div>
-      <!-- ./wrapper -->
-      
-      </div>
+
 
   </body>
 
-  <?php } ?>
+  <?php } } } ?>
 
   
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/adminlte.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/loader.js"></script>
-    <script>
-        $('#myBox').boxWidget({
-            animationSpeed: 500,
-            collapseTrigger: '#boxBtn',
-            removeTrigger: '#my-remove-button-trigger',
-            collapseIcon: 'fa-minus',
-            expandIcon: 'fa-plus',
-            removeIcon: 'fa-times'
-        })
-    </script>
+  
