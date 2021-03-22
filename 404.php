@@ -1,5 +1,9 @@
+<?php 
+    error_reporting (E_ALL ^ E_NOTICE);
+    session_start();?>
 <link rel="icon" type="image/png" href="img/website/warning.png" sizes="16x16">
 <link rel="stylesheet" type="text/css" href="css/404.css">
+<link rel="stylesheet" type="text/css" href="css/myStyle.css">
 <title>404 Not Found</title>
 
 <div class="main"> 
@@ -48,3 +52,14 @@
 
       
     </div>
+
+    <?php if (isset($_SESSION['404error'])) : ?>
+          <div style="position: fixed;right: 5;bottom: 0; width: 100%;text-align: right;">
+            <h3>
+                <?php 
+                  echo 'errorcode : '.$_SESSION['404error'];
+                  unset($_SESSION['404error']);
+                ?>
+            </h3>
+          </div>
+      <?php endif ?>
