@@ -64,7 +64,8 @@
                             <div class="navbar-item has-dropdown is-hoverable">
                           <a class="navbar-link">Welcome : &nbsp;<strong><?php echo $_SESSION['username']; ?></strong></a>
                             <div class="navbar-dropdown">
-                              <a class="navbar-item">Role is Admin</a>
+                              <div class="navbar-item">Role is &nbsp;<p style="color: red;">ADMIN</p></div>
+                              <hr class="navbar-divider">
                               <a class="navbar-item" href="profile">Profile</a>
                               <a class="navbar-item" href="dashboard">Dashboard</a>
                               <hr class="navbar-divider">
@@ -75,7 +76,8 @@
                             <div class="navbar-item has-dropdown is-hoverable">
                             <a class="navbar-link">Welcome : &nbsp;<strong><?php echo $_SESSION['username']; ?></strong></a>
                               <div class="navbar-dropdown">
-                                <a class="navbar-item">Role is Member</a>
+                                <div class="navbar-item">Role is &nbsp;<p style="color: darkblue;">MEMBER</p></div>
+                                <hr class="navbar-divider">
                                 <a class="navbar-item" href="profile">Profile</a>
                                 <a class="navbar-item" href="profile">Require Records</a>
                                 <hr class="navbar-divider">

@@ -1,3 +1,6 @@
+<?php 
+    error_reporting (E_ALL ^ E_NOTICE);
+    session_start();?>
 <link rel="stylesheet" href="css/loader.css">
 <script type="text/javascript" src="js/loader.js"></script>
 <div class="loader">
@@ -8,3 +11,4 @@
 <img src="image1.jpg" class="thumb" />
 <img src="image2.jpg" class="thumb" />
 <img src="image3.jpg" class="thumb" />
+<?php echo $_SESSION['cart']; ?>

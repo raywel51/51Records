@@ -4,15 +4,15 @@
     <?php 
     if (!isset($_SESSION['userlevel'])){header("location:login");}
     if (isset($_SESSION['userlevel'])){
-        if ($_SESSION['userlevel']=='member'){ 
-          $_SESSION['404error'] = "You Are Not Admin!!!";
-          header("location:404");
+        if  ($_SESSION['userlevel']=='member'){ 
+            $_SESSION['404error'] = "You Are Not Admin!!!";
+            header("location:404");
         } 
     else{ ?>
 
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/adminlte.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/js/adminlte.min.js"></script>
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/loader.js"></script>
   <script>
       $('#myBox').boxWidget({
@@ -32,9 +32,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>51 Recorde | Control Panel</title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.1/esm/ionicons.min.js">
     <link rel="stylesheet" href="css/adminlte.min.css">
     <link rel="stylesheet" href="css/skin.min.css">
     <link rel="stylesheet" href="css/loader.css">

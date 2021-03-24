@@ -29,7 +29,7 @@ while ($db = mysqli_fetch_array ($result, MYSQLI_ASSOC)) {
 		<img id='l' src="img/product/<?php echo $db['product_img'];?>" alt="<?php echo $db['product_name'];?>"   style='width:150px; height:150px; class='w3-hover-opacity'>
 		<p><b><?php echo $db['product_name'];?></b></p>
 		<p class='w3-left'><b>฿<?php echo $db['product_price'];?></b></p>
-		<p class='w3-right'><a class='w3-button w3-round-large w3-black'href ="add_cart.php?pid=<?php echo $db['product_id'];?>\">Add to cart</a></p><br/>
+		<p class='w3-right'><a class='w3-button w3-round-large w3-black'href ="add_cart.php?pid=<?php echo $db['product_id'];?>">Add to cart</a></p><br/>
 
   	</div>
 
