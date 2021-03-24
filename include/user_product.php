@@ -13,11 +13,8 @@
 <?php 
 
 include('connection\connect.php');
-
 $query = "SELECT * FROM product";
-
 $result = mysqli_query ($conn,$query);
-
 while ($db = mysqli_fetch_array ($result, MYSQLI_ASSOC)) {
 
 	
