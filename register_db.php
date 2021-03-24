@@ -38,9 +38,11 @@
             if ($result) { // if user exists
                 if ($result['username'] === $username) {
                     array_push($errors, "Username already exists");
+                    $_SESSION['error'] = "Username already exists";
                 }
                 if ($result['email'] === $email) {
                     array_push($errors, "Email already exists");
+                    $_SESSION['error'] = "Email already exists";
                 }
             }
 
@@ -50,6 +52,7 @@
                 $sql = "INSERT INTO userlogin (username, email, password , role) VALUES ('$username', '$email', '$password', 'member')";
                 mysqli_query($conn, $sql);
 
+                phpAlert(   "Hello world!\\n\\nPHP has got an Alert Box"   );
                 $_SESSION['username'] = $_POST['username'];
                 $_SESSION['success'] = "You are now logged in";
                 header('location: login.php');

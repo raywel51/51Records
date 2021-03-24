@@ -91,7 +91,6 @@ if(!empty($_SESSION['cart']))
 <tr>
 <td><a href="product.php">กลับหน้ารายการสินค้า</a></td>
 <td colspan="4" align="right">
-	<a href="clear.php">ล้างค่า</a></a>
     <input type="submit" name="button" id="button" value="ปรับปรุง" />
     <input type="button" name="Submit2" value="สั่งซื้อ" onclick="window.location='confirm.php';" />
 </td>
@@ -100,4 +99,6 @@ if(!empty($_SESSION['cart']))
 </form>
 </body>
 </html>
-<?php } ?>
+<?php } 
+header('location:product');
+?>

@@ -40,13 +40,14 @@
 		$query	= mysqli_query($conn, $sql);
 		$row	= mysqli_fetch_array($query);
 		$sum	= $row['product_price']*$qty;
+		$send   = $sum+50;
 		$total	+= $sum;
 
 		$productname = $row['product_name'];
 
   
 		//add to db
-		$sql = "INSERT INTO `orders` (product_name, quantity, price,order_number,address,userid,order_status) VALUES ('$productname', '$qty', '$sum', '$orderid', '$address', '$username','panding')";
+		$sql = "INSERT INTO `orders` (product_name, quantity, price,order_number,address,userid,order_status) VALUES ('$productname', '$qty', '$send', '$orderid', '$address', '$username','pending')";
 		mysqli_query($conn,$sql);
          
 	} ?>

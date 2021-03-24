@@ -1,4 +1,7 @@
-
+<?php 
+    error_reporting (E_ALL ^ E_NOTICE);
+    session_start();
+  ?>
 <link rel="icon" type="image/png" href="https://bulma.io/favicons/favicon-32x32.png?v=201701041855" sizes="32x32">
 <link rel="icon" type="image/png" href="https://bulma.io/favicons/favicon-16x16.png?v=201701041855" sizes="16x16">
 <link rel="stylesheet" type="text/css" href="css/userlogin.css">
@@ -26,6 +29,8 @@
       <input type="email" id="email" class="fadeIn second" name="email" placeholder="email">
       <input type="password" id="password" class="fadeIn third" name="pw1" placeholder="password">
       <input type="password" id="password" class="fadeIn third" name="pw2" placeholder="password">
+      <input type="number" id="tel" class="fadeIn third" name="tel" placeholder="telephone">
+      <input type="text" id="tel" class="fadeIn third" name="tel" placeholder="Address">
       <input type="submit" class="fadeIn fourth" value="Register" name="reg_user">
         
     </form>

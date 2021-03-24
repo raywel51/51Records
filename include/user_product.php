@@ -25,8 +25,10 @@ while ($db = mysqli_fetch_array ($result, MYSQLI_ASSOC)) {
     
 		<img id='l' src="img/product/<?php echo $db['product_img'];?>" alt="<?php echo $db['product_name'];?>"   style='width:150px; height:150px; class='w3-hover-opacity'>
 		<p><b><?php echo $db['product_name'];?></b></p>
-		<p class='w3-left'><b>฿<?php echo $db['product_price'];?></b></p>
-		<p class='w3-right'><?php echo "<a class='w3-button w3-round-large w3-black' href='cart.php?p_id=$db[product_id]&act=add'>Add to cart</a></p><br/> "; ?>
+		
+		<p class='w3-left'><b>฿<?php echo $db['product_price'];?></b></p></br>
+		<?php echo "<a class='w3-button w3-round-large w3-black' href='view.php?p_id=$db[product_id]'>Add to cart</a></p><br/> "; ?>
+		<p class='w3-left'><?php echo "<a class='w3-button w3-round-large w3-black' href='cartfast.php?p_id=$db[product_id]&act=add'>Add to cart</a></p><br/> "; ?>
   	</div>
 
 

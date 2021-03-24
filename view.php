@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include("connection/connect.php");  
+    
     if (isset($_GET['logout'])) {
       session_destroy();
       unset($_SESSION['username']);
@@ -22,7 +22,6 @@
     <title>51Records : ร้านเช่าแผ่นเสียงสุดมหัสจรรย์</title>
 </head>
 <body>
-
 <section>
         <nav class="navigation navbar">
 
@@ -70,49 +69,40 @@
       </div>
     </nav>
 </section><br><br><br>
-<form id="frmcart" name="frmcart" method="post" action="saveorder.php">
-  <table width="600" border="0" align="center" class="square">
-    <tr>
-      <td width="1558" colspan="4" bgcolor="#FFDDBB">
-      <strong>สั่งซื้อสินค้า</strong></td>
-    </tr>
-    <tr>
-      <td bgcolor="#F9D5E3">สินค้า</td>
-      <td align="center" bgcolor="#F9D5E3">ราคา</td>
-      <td align="center" bgcolor="#F9D5E3">จำนวน</td>
-      <td align="center" bgcolor="#F9D5E3">รวม/รายการ</td>
-    </tr>
+<table width="600" border="0" align="center" class="square">
+  <tr><td colspan="3" bgcolor="#CCCCCC"><b>Product</b></td></tr>
+  
 <?php
-	$total=0;
-	foreach($_SESSION['cart'] as $p_id=>$qty)
-	{
-		$sql	= "select * from product where product_id=$p_id";
-		$query	= mysqli_query($conn, $sql);
-		$row	= mysqli_fetch_array($query);
-		$sum	= $row['product_price']*$qty;
-    $sent	= $sum+50;
-		$total	+= $sent;
-    echo "<tr>";
-    echo "<td>" . $row["product_name"] . "</td>";
-    echo "<td align='right'>" .number_format($row['product_price'],2) ."</td>";
-    echo "<td align='right'>$qty</td>";
-    echo "<td align='right'>".number_format($sum,2)."</td>";
-    echo "</tr>";
-	}
-  echo "<tr>";
-    echo "<td  align='right' colspan='3' bgcolor='#F9D5E3'><b>ค่าจัดส่ง</b></td>";
-    echo "<td align='right' bgcolor='#F9D5E3'>"."<b>"."50"."</b>"."</td>";
-    echo "</tr>";
+//connect db
+    include("connection/connect.php");
+	$p_id = $_GET['p_id']; //สร้างตัวแปร p_id เพื่อรับค่า
+	
+	$sql = "select * from product where product_id=$p_id";  //รับค่าตัวแปร p_id ที่ส่งมา
+	$result = mysqli_query($conn, $sql);
+	$row = mysqli_fetch_array($result);
+	//แสดงรายละเอียด
 	echo "<tr>";
-    echo "<td  align='right' colspan='3' bgcolor='#F9D5E3'><b>รวม</b></td>";
-    echo "<td align='right' bgcolor='#F9D5E3'>"."<b>".number_format($sent,2)."</b>"."</td>";
+  	echo "<td width='20%' valign='top'><b>Title</b></td>";
+    echo "<td width='60%'>" . $row["product_name"] . "</td>";
+    echo "<td width='40%' rowspan='4'><img src='img/product/" . $row["product_img"] . " ' width='80' hight='80'></td>";
+  	echo "</tr>";
+  	echo "<tr>";
+    echo "<td valign='top'><b>Detail</b></td>";
+    echo "<td>" . $row["product_detail"] . "</td>";
+  	echo "</tr>";
+  	echo "<tr>";
+    echo "<td valign='top'><b>Price</b></td>";
+    echo "<td>" .number_format($row["product_price"],2) . "</td>";
+  	echo "</tr>"; 
+  	echo "<tr>";
+    echo "<td colspan='6' align='center'>";
+    echo "<a href='cart.php?p_id=$row[product_id]&act=add'> เพิ่มลงตะกร้าสินค้า </a></td>";
     echo "</tr>";
 ?>
+</table>
 
-	<td colspan="4" align="center" bgcolor="#CCCCCC">
-	<input type="submit" name="Submit2" value="สั่งซื้อ" />
+<p><center><a href="product.php">กลับไปหน้ารายการสินค้า</a></center>
 
-</form>
 </body>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script type="text/javascript" src="js/website.js"></script>

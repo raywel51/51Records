@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include("connection/connect.php");  
+    
     if (isset($_GET['logout'])) {
       session_destroy();
       unset($_SESSION['username']);
@@ -8,6 +8,20 @@
   }
   
   ?>
+
+<?php
+include("connection/connect.php");
+if(isset($_GET['edit_id'])){ //เมื่อรับค่า update_id มา
+    $edit_id = $_GET['edit_id'];
+    $query ="   SELECT *
+                FROM  product
+                WHERE product.product_id ='".$edit_id."' " ;
+
+    $result = mysqli_query($conn,$query);
+
+    while($arr1 = mysqli_fetch_array($result)){
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +33,7 @@
     <link rel="icon" type="image/png" href="https://bulma.io/favicons/favicon-32x32.png?v=201701041855" sizes="32x32">
     <link rel="icon" type="image/png" href="https://bulma.io/favicons/favicon-16x16.png?v=201701041855" sizes="16x16">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <title>51Records : ร้านเช่าแผ่นเสียงสุดมหัสจรรย์</title>
 </head>
 <body>
@@ -69,54 +84,75 @@
           </div>
       </div>
     </nav>
-</section><br><br><br>
-<form id="frmcart" name="frmcart" method="post" action="saveorder.php">
-  <table width="600" border="0" align="center" class="square">
-    <tr>
-      <td width="1558" colspan="4" bgcolor="#FFDDBB">
-      <strong>สั่งซื้อสินค้า</strong></td>
-    </tr>
-    <tr>
-      <td bgcolor="#F9D5E3">สินค้า</td>
-      <td align="center" bgcolor="#F9D5E3">ราคา</td>
-      <td align="center" bgcolor="#F9D5E3">จำนวน</td>
-      <td align="center" bgcolor="#F9D5E3">รวม/รายการ</td>
-    </tr>
-<?php
-	$total=0;
-	foreach($_SESSION['cart'] as $p_id=>$qty)
-	{
-		$sql	= "select * from product where product_id=$p_id";
-		$query	= mysqli_query($conn, $sql);
-		$row	= mysqli_fetch_array($query);
-		$sum	= $row['product_price']*$qty;
-    $sent	= $sum+50;
-		$total	+= $sent;
-    echo "<tr>";
-    echo "<td>" . $row["product_name"] . "</td>";
-    echo "<td align='right'>" .number_format($row['product_price'],2) ."</td>";
-    echo "<td align='right'>$qty</td>";
-    echo "<td align='right'>".number_format($sum,2)."</td>";
-    echo "</tr>";
-	}
-  echo "<tr>";
-    echo "<td  align='right' colspan='3' bgcolor='#F9D5E3'><b>ค่าจัดส่ง</b></td>";
-    echo "<td align='right' bgcolor='#F9D5E3'>"."<b>"."50"."</b>"."</td>";
-    echo "</tr>";
-	echo "<tr>";
-    echo "<td  align='right' colspan='3' bgcolor='#F9D5E3'><b>รวม</b></td>";
-    echo "<td align='right' bgcolor='#F9D5E3'>"."<b>".number_format($sent,2)."</b>"."</td>";
-    echo "</tr>";
-?>
+</section><br>
+<div align ="left"class="container-fluid">
+        <div class="row">
+        <div div class="col-md-3" align ="left" style="color: rgb(11, 5, 90);"></div>
+            
+          
+            <div div class="col-md-6" align ="left" style="color: rgb(11, 5, 90);"><br><br>
+                <form action="editproduct.php" id="myform" method="POST" enctype="multipart/form-data">
 
-	<td colspan="4" align="center" bgcolor="#CCCCCC">
-	<input type="submit" name="Submit2" value="สั่งซื้อ" />
+                <p class="text">แก้ไขข้อมูลสินค้า</p>
+                    <label for="name">รหัสสินค้า</label>
+                    <input class="form-control" type="text" value="<?php echo $arr1['product_id'] ?>" id="id" name="id" >
 
-</form>
+                    <label for="name">ชื่อสินค้า</label>
+                    <input class="form-control" type="text" value="<?php echo $arr1['product_name'] ?>" id="pname" name="pname" >
+
+                    <label for="name">ราคาสินค้า</label>
+                    <input class="form-control" type="number" value="<?php echo $arr1['product_price'] ?>" id="pprice" name="pprice" >
+
+                    <label for="name">ภาพสินค้า</label>
+                    <input class="form-control" type="test" value="<?php echo $arr1['product_img'] ?>" id="ppic" name="ppic" >
+
+                    <label for="name">รายละเอียดสินค้า</label>
+                    <input class="form-control" type="text" value="<?php echo $arr1['product_detail'] ?>" id="pdtell" name="pdtell" >
+
+                      </br>
+
+                    <input class="btn btn-outline-success btn-block" type="submit" value="+- แก้ไขข้อมูลสินค้า" name="addproduct">
+                </form>
+
+            </div>
+            
+        
+            
+        <div class="col-md-3"style="color: rgb(11, 5, 90);"></div>    
+        </div>
+    </div>
 </body>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script type="text/javascript" src="js/website.js"></script>
   <script type="text/javascript" src="js/imageslider.js"></script>
 
 </html>
+<?php
+    }// end while
 
+}// end if(isset($_GET['update_id']))
+
+?>
+
+<?php
+    include("connection/connect.php");
+    
+
+    if(isset($_POST['addproduct'])){
+        $id = $_POST['id'];
+        $name = $_POST['pname'];
+        $price = $_POST['pprice'];
+        $dtell = $_POST['pdtell'];
+        $sql = "UPDATE `product` SET `product_name` = '$name', `product_price` =  '$price', `product_detail` = '$dtell' WHERE `product`.`product_id` = $id;";
+
+
+if (mysqli_query($conn, $sql)) {
+    echo '<script type="text/javascript">alert("แก้ไขข้อมูลเรียบร้อย")</script>';
+    header("location: admin_product");
+  } else {
+    echo "Error updating record: " . mysqli_error($conn);
+  }
+
+        
+    }
+?>
