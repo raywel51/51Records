@@ -3,16 +3,13 @@
     session_start();?>
     <?php 
     if (!isset($_SESSION['userlevel'])){header("location:login");}
-
     if (isset($_SESSION['userlevel'])){
         if ($_SESSION['userlevel']=='member'){ 
           $_SESSION['404error'] = "You Are Not Admin!!!";
           header("location:404");
         } 
-    else{ 
-    ?>
+    else{ ?>
 
-    
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/adminlte.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -27,7 +24,6 @@
           removeIcon: 'fa-times'
       })
   </script>
-
 
 <!DOCTYPE html>
 <html lang="en">
