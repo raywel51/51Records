@@ -1,13 +1,4 @@
-<?php 
-    session_start();
-    
-    if (isset($_GET['logout'])) {
-      session_destroy();
-      unset($_SESSION['username']);
-      header('location:index');
-  }
-  
-  ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="..\css/imageslider.css">
     <link rel="icon" type="image/png" href="https://bulma.io/favicons/favicon-32x32.png?v=201701041855" sizes="32x32">
     <link rel="icon" type="image/png" href="https://bulma.io/favicons/favicon-16x16.png?v=201701041855" sizes="16x16">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>51Records : ร้านเช่าแผ่นเสียงสุดมหัสจรรย์</title>
 </head>
 <body>
@@ -42,38 +33,33 @@
                       <span class="navbar-item"><a class="navbar-item" href="../product">รายการสินค้า</a></span>
                       <span class="navbar-item"><a class="navbar-item" href="../about">ติดต่อฉัน</a></span>                    
 
-                      <?php if (!isset($_SESSION['username'])) : ?>
-                      <div class="navbar-item has-dropdown is-hoverable">
-                          <a class="navbar-link">โปรดเข้าสู่ระบบ</a>
-                            <div class="navbar-dropdown">
-                            <a class="navbar-item" href="../register">Register</a>
-                            <a class="navbar-item" href="../login">Login</a>
-                            <hr class="navbar-divider">
-                            <div class="navbar-item">Version 0.9.1</div>
-                            </div>
-                      </div></div><?php endif ?>
-
-                      <?php if (isset($_SESSION['username'])) : ?>
-                      <div class="navbar-item has-dropdown is-hoverable">
+                      <?php if (!isset($_SESSION['userlevel'])) : header("location: ../login"); endif?>
+                        
+                      <?php if (isset($_SESSION['userlevel'])) : ?>
+                        <?php 
+                          if ($_SESSION['userlevel']=='admin'){ ?>
+                            <div class="navbar-item has-dropdown is-hoverable">
                           <a class="navbar-link">Welcome : &nbsp;<strong><?php echo $_SESSION['username']; ?></strong></a>
                             <div class="navbar-dropdown">
-                            <a class="navbar-item">Role is Admin</a>
-                            <a class="navbar-item" href="../profile">Profile</a>
-                            <hr class="navbar-divider">
-                            <div class="navbar-item"><a href="index.php?logout='1'" style="color: red;">Logout</a></div>
-                            </div>
-                      </div></div><?php endif ?>
+                              <div class="navbar-item">Role is &nbsp;<p style="color: red;">ADMIN</p></div>
+                              <hr class="navbar-divider">
+                              <a class="navbar-item" href="../profile">Profile</a>
+                              <hr class="navbar-divider">
+                            <div class="navbar-item"><a href="../index.php?logout='1'" style="color: red;">Logout</a></div>
+                          </div>
+                      </div>
+                      <?php } else{ header("location: ../404"); $_SESSION['404error'] = "You Are Not Admin!!!"; } endif;
 
-                      <?php if (isset($_SESSION['userlevel'])) : ?>
+                      if (isset($_SESSION['userlevel'])) : ?>
                         <?php 
                           if ($_SESSION['userlevel']=='admin'){ ?>
                             <div class="navbar-item has-dropdown is-hoverable">
                           <a class="navbar-link">Admin Control</strong></a>
                             <div class="navbar-dropdown">
-                              <a class="navbar-item" href="../admin/admin_userlogin.php">userlogin</a>
-                              <a class="navbar-item" href="../admin/admin_product.php">product</a>
-                              <a class="navbar-item" href="../admin/admin_order.php">orders</a>
-                              <a class="navbar-item" href="../admin/admin_require.php">userRequire</a>
+                              <a class="navbar-item" href="admin_userlogin.php">userlogin</a>
+                              <a class="navbar-item" href="admin_product.php">product</a>
+                              <a class="navbar-item" href="admin_order.php">orders</a>
+                              <a class="navbar-item" href="admin_require.php">userRequire</a>
                           </div>
                       </div>
                       <?php } endif ?>
@@ -104,16 +90,15 @@
   while($row = mysqli_fetch_array($result))
   {
   	echo "<tr>";
-	echo "<td align='center'><img src='..\img/profile/" . $row["img"] ." ' width='80'></td>";
-	echo "<td align='left'>" . $row["username"] . "</td>";
-  echo "<td align='left'>" . $row["email"] . "</td>";
-  echo "<td align='left'>" . $row["name"] . "</td>";
-  echo "<td align='left'>" . $row["address"] . "</td>";
-  echo "<td align='left'>" . $row["tel"] . "</td>";
-  echo "<td align='left'>" . $row["role"] . "</td>";
-  echo "<td align='left'>" . $row["time_stamp"] . "</td>";
-    
-	echo "</tr>";
+    echo "<td align='center'><img src='..\img/profile/" . $row["img"] ." ' width='80'></td>";
+    echo "<td align='left'>" . $row["username"] . "</td>";
+    echo "<td align='left'>" . $row["email"] . "</td>";
+    echo "<td align='left'>" . $row["name"] . "</td>";
+    echo "<td align='left'>" . $row["address"] . "</td>";
+    echo "<td align='left'>" . $row["tel"] . "</td>";
+    echo "<td align='center'><a href='admin_edituserlogin.php?edit_id=$row[id]'>".$row["role"]."</i></a></td>";
+    echo "<td align='left'>" . $row["time_stamp"] . "</td>";
+	  echo "</tr>";
   }
   ?>
 </table>

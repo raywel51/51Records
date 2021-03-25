@@ -52,7 +52,7 @@
                 $sql = "INSERT INTO userlogin (username, email, password , role) VALUES ('$username', '$email', '$password', 'member')";
                 mysqli_query($conn, $sql);
 
-                phpAlert(   "Hello world!\\n\\nPHP has got an Alert Box"   );
+                echo "<script type='text/javascript'>alert('$message');</script>";
                 $_SESSION['username'] = $_POST['username'];
                 $_SESSION['success'] = "You are now logged in";
                 header('location: login.php');

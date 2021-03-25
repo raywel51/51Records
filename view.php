@@ -39,30 +39,60 @@
                 <div id="navbarMenu" class="navbar-menu">
                     <div class="navbar-end">
                       <span class="navbar-item"><a class="navbar-item" href="product">รายการสินค้า</a></span>
-                      <span class="navbar-item"><a class="navbar-item">ติดต่อฉัน</a></span>                    
+                      <span class="navbar-item"><a class="navbar-item" href="about">ติดต่อฉัน</a></span>                    
 
-                      <?php if (!isset($_SESSION['username'])) : ?>
-                      <div class="navbar-item has-dropdown is-hoverable">
+                      <?php if (!isset($_SESSION['userlevel'])) : ?>
+                        <div class="navbar-item has-dropdown is-hoverable">
                           <a class="navbar-link">โปรดเข้าสู่ระบบ</a>
                             <div class="navbar-dropdown">
-                            <a class="navbar-item" href="register">Register</a>
-                            <a class="navbar-item" href="login">Login</a>
-                            <hr class="navbar-divider">
+                              <a class="navbar-item" href="register">Register</a>
+                              <a class="navbar-item" href="login">Login</a>
+                              <hr class="navbar-divider">
                             <div class="navbar-item">Version 0.9.1</div>
                             </div>
-                      </div></div><?php endif ?>
+                      </div><?php endif ?>
 
-                      <?php if (isset($_SESSION['username'])) : ?>
-                      <div class="navbar-item has-dropdown is-hoverable">
+                      <?php if (isset($_SESSION['userlevel'])) : ?>
+                        <?php 
+                          if ($_SESSION['userlevel']=='admin'){ ?>
+                            <div class="navbar-item has-dropdown is-hoverable">
                           <a class="navbar-link">Welcome : &nbsp;<strong><?php echo $_SESSION['username']; ?></strong></a>
                             <div class="navbar-dropdown">
-                            <a class="navbar-item">Role is Admin</a>
-                            <a class="navbar-item" href="profile">Profile</a>
-                            <a class="navbar-item" href="dashboard">Dashboard</a>
-                            <hr class="navbar-divider">
+                              <div class="navbar-item">Role is &nbsp;<p style="color: red;">ADMIN</p></div>
+                              <hr class="navbar-divider">
+                              <a class="navbar-item" href="profile">Profile</a>
+                              <hr class="navbar-divider">
                             <div class="navbar-item"><a href="index.php?logout='1'" style="color: red;">Logout</a></div>
+                          </div>
+                      </div>
+                      <?php } else{ ?>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">Welcome : &nbsp;<strong><?php echo $_SESSION['username']; ?></strong></a>
+                              <div class="navbar-dropdown">
+                                <div class="navbar-item">Role is &nbsp;<p style="color: darkblue;">MEMBER</p></div>
+                                <hr class="navbar-divider">
+                                <a class="navbar-item" href="profile">Profile</a>
+                                <a class="navbar-item" href="cart">cart</a>
+                                <a class="navbar-item" href="require">Require Records</a>
+                                <hr class="navbar-divider">
+                              <div class="navbar-item"><a href="index.php?logout='1'" style="color: red;">Logout</a></div>
                             </div>
-                      </div></div><?php endif ?>
+                        </div>
+                      <?php } endif ?>
+
+                      <?php if (isset($_SESSION['userlevel'])) : ?>
+                        <?php 
+                          if ($_SESSION['userlevel']=='admin'){ ?>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                          <a class="navbar-link">Admin Control</strong></a>
+                            <div class="navbar-dropdown">
+                              <a class="navbar-item" href="../51Records/admin/admin_userlogin.php">userlogin</a>
+                              <a class="navbar-item" href="../51Records/admin/admin_product.php">product</a>
+                              <a class="navbar-item" href="../51Records/admin/admin_order.php">orders</a>
+                              <a class="navbar-item" href="../51Records/admin/admin_require.php">userRequire</a>
+                          </div>
+                      </div>
+                      <?php } endif ?>
                 </div>
 
           </div>

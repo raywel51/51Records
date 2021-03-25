@@ -43,9 +43,8 @@
                 
                 <div id="navbarMenu" class="navbar-menu">
                     <div class="navbar-end">
-                      <span class="navbar-item"><a class="navbar-item" href="cart">ตะกล้าสินค้า</a></span>
                       <span class="navbar-item"><a class="navbar-item" href="product">รายการสินค้า</a></span>
-                      <span class="navbar-item"><a class="navbar-item">ติดต่อฉัน</a></span>                    
+                      <span class="navbar-item"><a class="navbar-item" href="about">ติดต่อฉัน</a></span>                    
 
                       <?php if (!isset($_SESSION['userlevel'])) : ?>
                         <div class="navbar-item has-dropdown is-hoverable">
@@ -67,7 +66,6 @@
                               <div class="navbar-item">Role is &nbsp;<p style="color: red;">ADMIN</p></div>
                               <hr class="navbar-divider">
                               <a class="navbar-item" href="profile">Profile</a>
-                              <a class="navbar-item" href="dashboard/dashboard.php">Dashboard</a>
                               <hr class="navbar-divider">
                             <div class="navbar-item"><a href="index.php?logout='1'" style="color: red;">Logout</a></div>
                           </div>
@@ -79,7 +77,8 @@
                                 <div class="navbar-item">Role is &nbsp;<p style="color: darkblue;">MEMBER</p></div>
                                 <hr class="navbar-divider">
                                 <a class="navbar-item" href="profile">Profile</a>
-                                <a class="navbar-item" href="profile">Require Records</a>
+                                <a class="navbar-item" href="cart">cart</a>
+                                <a class="navbar-item" href="require">Require Records</a>
                                 <hr class="navbar-divider">
                               <div class="navbar-item"><a href="index.php?logout='1'" style="color: red;">Logout</a></div>
                             </div>
@@ -96,6 +95,7 @@
                               <a class="navbar-item" href="../51Records/admin/admin_product.php">product</a>
                               <a class="navbar-item" href="../51Records/admin/admin_order.php">orders</a>
                               <a class="navbar-item" href="../51Records/admin/admin_require.php">userRequire</a>
+                              <a class="navbar-item" href="../51Records/admin/admin_about.php">about</a>
                           </div>
                       </div>
                       <?php } endif ?>
@@ -111,46 +111,40 @@
       <div class="slide active">
         <img src="img\imageslider\1.jpg" alt="">
         <div class="info">
-          <h2>Slide 01</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <h2>51Records</h2>
         </div>
       </div>
 
       <div class="slide">
         <img src="img\imageslider\2.jpg" alt="">
         <div class="info">
-          <h2>Slide 02</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <h2>51Records</h2>
         </div>
       </div>
       
       <div class="slide">
         <img src="img\imageslider\3.jpg" alt="">
         <div class="info">
-          <h2>Slide 03</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <h2>51Records</h2>
         </div>
       </div>
 
       <div class="slide">
         <img src="img\imageslider\4.jpg" alt="">
         <div class="info">
-          <h2>Slide 04</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <h2>51Records</h2>
         </div>
       </div>
 
       <div class="slide">
         <img src="img\imageslider\5.jpg" alt="">
         <div class="info">
-          <h2>Slide 05</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <h2>51Records</h2>
         </div>
       </div>
     </div>
 </section>
 
-</br></br></br>
 </body>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script type="text/javascript" src="js/website.js"></script>

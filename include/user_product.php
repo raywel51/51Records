@@ -1,7 +1,7 @@
-<style>#l {height: 250px;width: 50%;}</style>
+<style>#l {height: 300px;width: 50%;}</style>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/myStyle.css">
+<link rel="stylesheet" href="../css/myStyle.css">
 <div class="w3-white" id="tour">
 
 
@@ -22,13 +22,12 @@ while ($db = mysqli_fetch_array ($result, MYSQLI_ASSOC)) {
 
 
     <div class='w3-col s4 w3-card w3-section w3-margin-bottom w3-container w3-white w3-col'>
-    
 		<img id='l' src="img/product/<?php echo $db['product_img'];?>" alt="<?php echo $db['product_name'];?>"   style='width:150px; height:150px; class='w3-hover-opacity'>
 		<p><b><?php echo $db['product_name'];?></b></p>
 		
-		<p class='w3-left'><b>฿<?php echo $db['product_price'];?></b></p></br>
-		<?php echo "<a class='w3-button w3-round-large w3-black' href='view.php?p_id=$db[product_id]'>Add to cart</a></p><br/> "; ?>
-		<p class='w3-left'><?php echo "<a class='w3-button w3-round-large w3-black' href='cartfast.php?p_id=$db[product_id]&act=add'>Add to cart</a></p><br/> "; ?>
+		<p class='w3-left'><b>฿<?php echo $db['product_price'];?></b>&nbsp;&nbsp;&nbsp;<a class='w3-button w3-white w3-border w3-border-blue' href='view.php?p_id=<?php echo $db['product_id'];?>'>รายละเอียด</a></p>
+
+		<?php echo "<a class='w3-button w3-yellow w3-border' href='cartfast.php?p_id=$db[product_id]&act=add'>Add to cart</a></p><br/> "; ?>
   	</div>
 
 

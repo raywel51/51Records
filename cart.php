@@ -1,12 +1,10 @@
-<?php error_reporting (E_ALL ^ E_NOTICE); error_reporting(E_ERROR | E_PARSE);?>
+<?php ini_set('display_errors','Off');;?>
 <?php 
-    error_reporting (E_ALL ^ E_NOTICE);
     session_start();?>
     <?php 
     if (!isset($_SESSION['userlevel'])){header("location:login");} ?>
 
 <?php
-	session_start();
 	
 	$p_id = $_GET['p_id']; 
 	$act = $_GET['act'];
@@ -42,10 +40,92 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/myStyle.css">
+    <link rel="stylesheet" type="text/css" href="css/imageslider.css">
+    <link rel="stylesheet" type="text/css" href="css/loader.css">
+    <link rel="icon" type="image/png" href="https://bulma.io/favicons/favicon-32x32.png?v=201701041855" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://bulma.io/favicons/favicon-16x16.png?v=201701041855" sizes="16x16">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Shopping Cart</title>
 </head>
-
 <body>
+<section>
+        <nav class="navigation navbar">
+
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="index.php"><img src="img/website/logo.png" alt="Logo"></a>
+                    <span class="navbar-burger burger" data-target="navbarMenu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+                
+                <div id="navbarMenu" class="navbar-menu">
+                    <div class="navbar-end">
+                      <span class="navbar-item"><a class="navbar-item" href="product">รายการสินค้า</a></span>
+                      <span class="navbar-item"><a class="navbar-item" href="about">ติดต่อฉัน</a></span>                    
+
+                      <?php if (!isset($_SESSION['userlevel'])) : ?>
+                        <div class="navbar-item has-dropdown is-hoverable">
+                          <a class="navbar-link">โปรดเข้าสู่ระบบ</a>
+                            <div class="navbar-dropdown">
+                              <a class="navbar-item" href="register">Register</a>
+                              <a class="navbar-item" href="login">Login</a>
+                              <hr class="navbar-divider">
+                            <div class="navbar-item">Version 0.9.1</div>
+                            </div>
+                      </div><?php endif ?>
+
+                      <?php if (isset($_SESSION['userlevel'])) : ?>
+                        <?php 
+                          if ($_SESSION['userlevel']=='admin'){ ?>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                          <a class="navbar-link">Welcome : &nbsp;<strong><?php echo $_SESSION['username']; ?></strong></a>
+                            <div class="navbar-dropdown">
+                              <div class="navbar-item">Role is &nbsp;<p style="color: red;">ADMIN</p></div>
+                              <hr class="navbar-divider">
+                              <a class="navbar-item" href="profile">Profile</a>
+                              <hr class="navbar-divider">
+                            <div class="navbar-item"><a href="index.php?logout='1'" style="color: red;">Logout</a></div>
+                          </div>
+                      </div>
+                      <?php } else{ ?>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">Welcome : &nbsp;<strong><?php echo $_SESSION['username']; ?></strong></a>
+                              <div class="navbar-dropdown">
+                                <div class="navbar-item">Role is &nbsp;<p style="color: darkblue;">MEMBER</p></div>
+                                <hr class="navbar-divider">
+                                <a class="navbar-item" href="profile">Profile</a>
+                                <a class="navbar-item" href="cart">cart</a>
+                                <a class="navbar-item" href="require">Require Records</a>
+                                <hr class="navbar-divider">
+                              <div class="navbar-item"><a href="index.php?logout='1'" style="color: red;">Logout</a></div>
+                            </div>
+                        </div>
+                      <?php } endif ?>
+
+                      <?php if (isset($_SESSION['userlevel'])) : ?>
+                        <?php 
+                          if ($_SESSION['userlevel']=='admin'){ ?>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                          <a class="navbar-link">Admin Control</strong></a>
+                            <div class="navbar-dropdown">
+                              <a class="navbar-item" href="../51Records/admin/admin_userlogin.php">userlogin</a>
+                              <a class="navbar-item" href="../51Records/admin/admin_product.php">product</a>
+                              <a class="navbar-item" href="../51Records/admin/admin_order.php">orders</a>
+                              <a class="navbar-item" href="../51Records/admin/admin_require.php">userRequire</a>
+                          </div>
+                      </div>
+                      <?php } endif ?>
+                  
+                  </div> 
+                </div>
+            </div>
+        </nav>
+</section></br></br></br></br></br>
 <form id="frmcart" name="frmcart" method="post" action="?act=update">
   <table width="600" border="0" align="center" class="square">
     <tr>
