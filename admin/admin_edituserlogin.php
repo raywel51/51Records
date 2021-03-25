@@ -97,8 +97,8 @@ if(isset($_GET['edit_id'])){ //เมื่อรับค่า update_id ม�
 
 
   <div class="field is-horizontal"></div>
-  <label class="label">Order is </label>
-  <input class="input is-primary" name="userid" id="ordercode" type="text" value="<?php echo $arr1["id"];?>">
+  <label class="label">User is </label>
+  <input class="input is-primary" size="1" name="userid" id="ordercode" type="text" value="<?php echo $arr1["id"];?>">
   
         
 

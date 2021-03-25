@@ -31,13 +31,12 @@
                 header("location: index");
             } else {
                 array_push($errors, "Wrong Username or Password");
-                $_SESSION['error'] = "Wrong Username or Password!";
-                echo $passwordenc;
-                //header("location: login");
+                $_SESSION['lgerror'] = "Wrong Username or Password!";
+                header("location: login");
             }
         } else {
             array_push($errors, "Username & Password is required");
-            $_SESSION['error'] = "Username & Password is required";
+            $_SESSION['lgerror'] = "Username & Password is required";
             header("location: login");
         }
     }

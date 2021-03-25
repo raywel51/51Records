@@ -10,6 +10,14 @@
         $password_1 = mysqli_real_escape_string($conn, $_POST['pw1']);
         $password_2 = mysqli_real_escape_string($conn, $_POST['pw2']);
         $tel = mysqli_real_escape_string($conn, $_POST['tel']);
+        $address = mysqli_real_escape_string($conn, $_POST['address']);
+        $name = mysqli_real_escape_string($conn, $_POST['name']);
+
+        if(!empty($_FILES['myfile']['name'])){
+            $filename = $_FILES['myfile']['name'];
+
+            copy($_FILES['myfile']['tmp_name'],"img/profile/".$_FILES['myfile']['name']);
+        }
 
             if (empty($username)) {
                 array_push($errors, "Username is required");
@@ -49,7 +57,7 @@
             if (count($errors) == 0) {
 
 
-                $sql = "INSERT INTO userlogin (username, email, password , role) VALUES ('$username', '$email', '$password', 'member')";
+                $sql = "INSERT INTO `userlogin`(`username`, `password`, `email`, `img`, `name`, `address`, `tel`, `role`) VALUES ('$username', '$password', '$email', '$filename','$name','$address','$tel','member')";
                 mysqli_query($conn, $sql);
 
                 echo "<script type='text/javascript'>alert('$message');</script>";

@@ -18,9 +18,9 @@
     <link rel="stylesheet" type="text/css" href="css/myStyle.css">
     <link rel="stylesheet" type="text/css" href="css/imageslider.css">
     <link rel="stylesheet" type="text/css" href="css/loader.css">
-    <link rel="icon" type="image/png" href="https://bulma.io/favicons/favicon-32x32.png?v=201701041855" sizes="32x32">
-    <link rel="icon" type="image/png" href="https://bulma.io/favicons/favicon-16x16.png?v=201701041855" sizes="16x16">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/cards.css">
+    <link rel="icon" type="image/svg" href="img/website/favicon.svg" sizes="32x32">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>51Records : ร้านเช่าแผ่นเสียงสุดมหัสจรรย์</title>
 </head>
 <body>
@@ -144,7 +144,191 @@
       </div>
     </div>
 </section>
+<section class="section">
+        <div class="container has-text-centered">
+            <h2 class="title">51Records</h2>
+            <p>We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
+            <div class="columns is-centered" style="padding: 2rem">
+
+            <?php
+  //connect db
+  include("connection/connect.php");
+  $sql = "select * from product WHERE product_id=21";  //เรียกข้อมูลมาแสดงทั้งหมด
+  $result = mysqli_query($conn, $sql);
+  while($row = mysqli_fetch_array($result))
+  { ?>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-2by1">
+                                <img src="img/product/<?php echo $row["product_img"]; ?>" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4"><?php echo $row["product_name"]; ?></p>
+                                    <p class="subtitle is-6">@polycat</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                <?php echo $row["product_detail"]; ?>
+                                <a href='cartfast.php?p_id=21&act=add'>@Buyit</a>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <?php } ?>
+
+            <?php
+  //connect db
+  include("connection/connect.php");
+  $sql = "select * from product WHERE product_id=22";  //เรียกข้อมูลมาแสดงทั้งหมด
+  $result = mysqli_query($conn, $sql);
+  while($row = mysqli_fetch_array($result))
+  { ?>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-2by1">
+                                <img src="img/product/<?php echo $row["product_img"]; ?>" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4"><?php echo $row["product_name"]; ?></p>
+                                    <p class="subtitle is-6">@Chilling Sunday</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                <?php echo $row["product_detail"]; ?>
+                                <a href='cartfast.php?p_id=22&act=add'>@Buyit</a>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <?php } ?>
+
+            <?php
+  //connect db
+  include("connection/connect.php");
+  $sql = "select * from product WHERE product_id=26";  //เรียกข้อมูลมาแสดงทั้งหมด
+  $result = mysqli_query($conn, $sql);
+  while($row = mysqli_fetch_array($result))
+  { ?>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-2by1">
+                                <img src="img/product/<?php echo $row["product_img"]; ?>" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4"><?php echo $row["product_name"]; ?></p>
+                                    <p class="subtitle is-6">@Taitosmith</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                <?php echo $row["product_detail"]; ?>
+                                <a href='cartfast.php?p_id=26&act=add'>@Buyit</a>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <?php } ?>
+
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container has-text-centered">
+            <h2 class="title">Contact</h2>
+
+            <form class="contact1-form validate-form" action="index.php" id="myform" method="POST" enctype="multipart/form-data">
+                <div class="field is-horizontal">
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" name = "name" type="text" placeholder="Name">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left has-icons-right">
+                                <input class="input" name = "123" type="email" placeholder="Email">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <textarea class="textarea" name = "message" placeholder="Message us"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <button type="submit" name ="add" class="button is-primary">
+                                    Send message
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    <a href="">
+                        <i class="fab fa-facebook-square fa-2x"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-twitter-square fa-2x"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-instagram fa-2x"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-snapchat fa-2x"></i>
+                    </a>
+                </p>
+                <p>
+                   By Nonthawat Kittayawat
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
 </body>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script type="text/javascript" src="js/website.js"></script>
@@ -152,3 +336,20 @@
   <script type="text/javascript" src="js/loader.js"></script>
 
 </html>
+
+<?php 
+    include('connection\connect.php');
+    
+    if (isset($_POST['add'])) {
+        $name = $_POST['name'];
+        $name1 = $_POST['123'];
+		$message = $_POST['message'];
+
+                $sql = "INSERT INTO `about`(`name`, `email`, `message`) VALUES ('$name', '$name1', '$message')";
+                mysqli_query($conn, $sql);
+
+            } else {
+            }
+    
+
+?>

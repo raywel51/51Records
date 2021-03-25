@@ -2,7 +2,7 @@
 <?php 
     session_start();?>
     <?php 
-    if (!isset($_SESSION['userlevel'])){header("location:login");} ?>
+    if (!isset($_SESSION['username'])){header("location:login");} ?>
 
 <?php
 	
@@ -65,8 +65,9 @@
                 
                 <div id="navbarMenu" class="navbar-menu">
                     <div class="navbar-end">
+                      <span class="navbar-item"><a class="navbar-item" href="cart">ตะกล้าสินค้า</a></span>
                       <span class="navbar-item"><a class="navbar-item" href="product">รายการสินค้า</a></span>
-                      <span class="navbar-item"><a class="navbar-item" href="about">ติดต่อฉัน</a></span>                    
+                      <span class="navbar-item"><a class="navbar-item">ติดต่อฉัน</a></span>                    
 
                       <?php if (!isset($_SESSION['userlevel'])) : ?>
                         <div class="navbar-item has-dropdown is-hoverable">
@@ -88,6 +89,7 @@
                               <div class="navbar-item">Role is &nbsp;<p style="color: red;">ADMIN</p></div>
                               <hr class="navbar-divider">
                               <a class="navbar-item" href="profile">Profile</a>
+                              <a class="navbar-item" href="dashboard/dashboard.php">Dashboard</a>
                               <hr class="navbar-divider">
                             <div class="navbar-item"><a href="index.php?logout='1'" style="color: red;">Logout</a></div>
                           </div>
@@ -100,7 +102,7 @@
                                 <hr class="navbar-divider">
                                 <a class="navbar-item" href="profile">Profile</a>
                                 <a class="navbar-item" href="cart">cart</a>
-                                <a class="navbar-item" href="require">Require Records</a>
+                                <a class="navbar-item" href="profile">Require Records</a>
                                 <hr class="navbar-divider">
                               <div class="navbar-item"><a href="index.php?logout='1'" style="color: red;">Logout</a></div>
                             </div>

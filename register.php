@@ -2,8 +2,7 @@
     error_reporting (E_ALL ^ E_NOTICE);
     session_start();
   ?>
-<link rel="icon" type="image/png" href="https://bulma.io/favicons/favicon-32x32.png?v=201701041855" sizes="32x32">
-<link rel="icon" type="image/png" href="https://bulma.io/favicons/favicon-16x16.png?v=201701041855" sizes="16x16">
+<link rel="icon" type="image/svg" href="img/website/favicon.svg" sizes="32x32">
 <link rel="stylesheet" type="text/css" href="css/userlogin.css">
 <title>51Records : หน้าการสมัครสมาชิก</title>
 <div class="wrapper fadeInDown">
@@ -14,7 +13,7 @@
       <img src="img/website/logo_black.png" id="icon" alt="User Icon" />
     </div>
 
-    <form action="register_db" method="post">
+    <form action="register_db" method="post" enctype="multipart/form-data">
       <?php if (isset($_SESSION['error'])) : ?>
           <div class="error">
             <h3>
@@ -26,11 +25,13 @@
           </div>
       <?php endif ?>
       <input type="text" id="login" class="fadeIn second" name="username" placeholder="username">
+      <input type="text" id="name" class="fadeIn second" name="name" placeholder="name">
       <input type="email" id="email" class="fadeIn second" name="email" placeholder="email">
       <input type="password" id="password" class="fadeIn third" name="pw1" placeholder="password">
       <input type="password" id="password" class="fadeIn third" name="pw2" placeholder="password">
       <input type="number" id="tel" class="fadeIn third" name="tel" placeholder="telephone">
-      <input type="text" id="tel" class="fadeIn third" name="tel" placeholder="Address">
+      <input type="text" id="tel" class="fadeIn third" name="address" placeholder="Address">
+      <input class="fadeIn third" type="file" placeholder="ภาพสินค้า" id="ppic" name="myfile" >
       <input type="submit" class="fadeIn fourth" value="Register" name="reg_user">
         
     </form>

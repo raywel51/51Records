@@ -1,6 +1,8 @@
-
-<link rel="icon" type="image/png" href="https://bulma.io/favicons/favicon-32x32.png?v=201701041855" sizes="32x32">
-<link rel="icon" type="image/png" href="https://bulma.io/favicons/favicon-16x16.png?v=201701041855" sizes="16x16">
+<?php 
+    error_reporting (E_ALL ^ E_NOTICE);
+    session_start();
+  ?>
+<link rel="icon" type="image/svg" href="img/website/favicon.svg" sizes="32x32">
 <link rel="stylesheet" type="text/css" href="css/userlogin.css">
 <title>51Records : หน้าการเข้าสู่ระบบ</title>
 <div class="wrapper fadeInDown">
@@ -12,12 +14,12 @@
     </div>
 
     <form action="login_db" method="post">
-      <?php if (isset($_SESSION['error'])) : ?>
+    <?php if (isset($_SESSION['lgerror'])) : ?>
           <div class="error">
             <h3>
                 <?php 
-                  echo $_SESSION['error'];
-                  unset($_SESSION['error']);
+                  echo "*".$_SESSION['lgerror']."*";
+                  unset($_SESSION['lgerror']);
                 ?>
             </h3>
           </div>

@@ -17,8 +17,7 @@
     <link rel="stylesheet" type="text/css" href="css/myStyle.css">
     <link rel="stylesheet" type="text/css" href="css/imageslider.css">
     <link rel="stylesheet" type="text/css" href="css/card.css">
-    <link rel="icon" type="image/png" href="https://bulma.io/favicons/favicon-32x32.png?v=201701041855" sizes="32x32">
-    <link rel="icon" type="image/png" href="https://bulma.io/favicons/favicon-16x16.png?v=201701041855" sizes="16x16">
+    <link rel="icon" type="image/svg" href="img/website/favicon.svg" sizes="32x32">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>51Records : ร้านเช่าแผ่นเสียงสุดมหัสจรรย์</title>
 
@@ -116,8 +115,8 @@
 			$username =  $row['id'];
 			$email = $row['email'];
 			$address = $row['address']; 
-      $name = $row['name'];?>
-	
+      $name = $row['name'];
+	    $_SESSION['name'] = $row['name'];?>
 
     <br><br><br><br><br><br>
     <div class="card">
@@ -167,7 +166,35 @@
   }
   ?>
 </table>
+ 
+
+  <div class="column">
+  <p>ตารางRequire</p>
+  <table width="80%" border="1" align="center" bordercolor="#666666" class="table table-hover">
+  <tr>
+    <td width="10%" align="center" bgcolor="#CCCCCC"><strong>ชื่อผู้ใช้</strong></td>
+    <td width="10%" align="center" bgcolor="#CCCCCC"><strong>ข้อหัวเรื่อง</strong></td>
+    <td width="40%" align="center" bgcolor="#CCCCCC"><strong>ข้อความ</strong></td>
+  </tr>
+  
+  
+  <?php
+  //connect db
+  $sql = "select * from require0 order by id";  //เรียกข้อมูลมาแสดงทั้งหมด
+  $result = mysqli_query($conn, $sql);
+  while($row = mysqli_fetch_array($result))
+  {
+  	echo "<tr>";
+    echo "<td align='left'>" . $row["name"] . "</td>";
+    echo "<td align='left'>" . $row["namep"] . "</td>";
+    echo "<td align='left'>" . $row["message"] . "</td>";
+	  echo "</tr>";
+  }
+  ?>
+</table>
   </div>
+
+  
 </div>
 
 </body>

@@ -1,0 +1,54 @@
+:root {
+  --bg: #d2c2f0;
+  --card-bg: #041221;
+}
+
+body {
+  background: var(--bg);
+}
+
+.box {
+
+  background: var(--card-bg);
+}
+
+
+input::placeholder {
+  color: antiquewhite;
+}
+
+
+
+
+
+/* Card start*/
+.card {
+  overflow: hidden;
+  background: ghostwhite;
+  color: var(--bg);
+}
+
+
+
+.title.no-padding {
+  margin-bottom: 0 !important;
+}
+
+.footer {
+  background: var(--card-bg);
+  color: ghostwhite;
+}
+
+.footer p,
+strong {
+  color: ghostwhite
+}
+
+.footer a:hover {
+  color: crimson;
+}
+
+.fa {
+  color: ghostwhite;
+  margin: 10px
+}
